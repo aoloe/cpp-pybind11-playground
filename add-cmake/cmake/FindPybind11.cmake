@@ -3,6 +3,7 @@
 # --------
 #
 # Find the Pybind11 includes.
+# Copied from https://github.com/ndarray/ndarray/blob/master/cmake/FindPybind11.cmake
 #
 # Result Variables
 # ^^^^^^^^^^^^^^^^
