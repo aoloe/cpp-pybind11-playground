@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 2.8.12)
+project(scripting)
+
+FIND_PACKAGE(PythonInterp 3 REQUIRED)
+FIND_PACKAGE(PythonLibs 3 REQUIRED)
+
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
+
+ADD_EXECUTABLE(scripting src/main.cpp)
+TARGET_LINK_LIBRARIES(scripting ${PYTHON_LIBRARIES})
+
+IF( NOT EXISTS "${PYBIND11_DIR}" )
+    SET(PYBIND11_DIR ${PROJECT_SOURCE_DIR}"/pybind11")
+ENDIF()
+
+SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+FIND_PACKAGE(Pybind11 REQUIRED)
+
+SET(CMAKE_MODULE_PATH ${PYBIND11_DIR}/tools ${CMAKE_MODULE_PATH})
+INCLUDE(${PYBIND11_DIR}/tools/pybind11Tools.cmake)
+
+project(petapi)
+pybind11_add_module(petapi src/api-pet.cpp)
