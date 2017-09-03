@@ -1,1 +1,1 @@
-set_the_answer(42)
+set_the_answer(y - 1)
