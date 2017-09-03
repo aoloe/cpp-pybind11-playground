@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
 project(scripting)
 
 FIND_PACKAGE(PythonInterp 3 REQUIRED)
@@ -15,6 +15,13 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 FIND_PACKAGE(Pybind11 REQUIRED)
 
 INCLUDE_DIRECTORIES(${PYBIND11_INCLUDE_DIR})
+
+# SET(CMAKE_MODULE_PATH ${pybind11_DIR}/tools ${CMAKE_MODULE_PATH})
+
+# SET(pybind11_DIR "${PYBIND11_DIR}")
+# MESSAGE( STATUS "pybind11_DIR: " ${pybind11_DIR} )
+
+# FIND_PACKAGE(pybind11 CONFIG)
 
 ADD_EXECUTABLE(scripting src/main.cpp)
 TARGET_LINK_LIBRARIES(scripting ${PYTHON_LIBRARIES})

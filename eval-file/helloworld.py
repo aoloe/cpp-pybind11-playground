@@ -1,1 +1,1 @@
-print("Hello world")
+set_the_answer(42)

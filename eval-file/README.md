@@ -1,6 +1,7 @@
 # Eval a python script that modifies a C++ object
 
-https://github.com/pybind/pybind11/blob/master/tests/test_eval.cpp#L63
+- http://pybind11.readthedocs.io/en/latest/advanced/embedding.html
+- https://github.com/pybind/pybind11/blob/master/tests/test_eval.cpp#L63
 
 ~~~.sh
 $ mkdir build
