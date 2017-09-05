@@ -1,16 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
+# cmake_minimum_required(VERSION 3.4) # probably 3.4 is needed for mac
 project(scripting)
-
-FIND_PACKAGE(PythonInterp 3 REQUIRED)
-FIND_PACKAGE(PythonLibs 3 REQUIRED)
- 
-INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
-
-SET(CMAKE_MODULE_PATH ${pybind11_DIR}/share/cmake/pybind11 ${CMAKE_MODULE_PATH})
 
 MESSAGE( STATUS "CMAKE_MODULE_PATH: " ${CMAKE_MODULE_PATH} )
 
 FIND_PACKAGE(pybind11 CONFIG)
 
 ADD_EXECUTABLE(scripting src/main.cpp)
-TARGET_LINK_LIBRARIES(scripting ${PYTHON_LIBRARIES})
+TARGET_LINK_LIBRARIES(scripting pybind11::embed)
