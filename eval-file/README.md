@@ -5,7 +5,7 @@
 
 ~~~.sh
 $ mkdir build
-$ cmake -DPYBIND11_DIR=/home/ale/src/pybind11 -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 ..
+$ cmake -Dpybind11_DIR=/home/ale/bin/pybind11 -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 ..
 $ make
 $ ./scripting
 ~~~

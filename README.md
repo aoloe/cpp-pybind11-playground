@@ -5,6 +5,9 @@
 - get the code from github
 - (install `python3-pytest`)
 - compile it as explained the documentation
+  - `mkdir build && cd build`
+  - `cmake -D CMAKE_INSTALL_PREFIX=/the/prefix/where/you/install/pybind11 ..`
+  - `make install`
 
 ## Sample projects
 
