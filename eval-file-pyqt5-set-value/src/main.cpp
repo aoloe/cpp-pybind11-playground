@@ -15,4 +15,6 @@ int main()
 	local["set_the_answer"] = py::cpp_function([&](int value) { val_out = value; });
 
     py::eval_file("../input-number.py", py::globals(), local);
+
+	std::cout << "value set by the python script: " << val_out << std::endl;
 }
