@@ -14,9 +14,7 @@ int main()
 	int val_out;
 	local["set_the_answer"] = py::cpp_function([&](int value) { val_out = value; });
 
-
-    py::object scope = py::module::import("__main__").attr("__dict__");
-    py::eval_file("../set-the-y.py", scope, local);
+    py::eval_file("../input-number.py", py::globals(), local);
 
 	std::cout << "value set by the python script: " << val_out << std::endl;
 }
