@@ -23,7 +23,7 @@ int main()
 
 	auto module = py::module::import("foo_module");
 
-	auto locals = py::dict("foo_copy"_a=foo1, "foo_ref"_a=&foo2, **module.attr("__dict__"));  // note the &
+	auto locals = py::dict("foo_copy"_a=foo1, "foo_ref"_a=py::cast(foo2, py::return_value_policy::reference), **module.attr("__dict__")); // foo1 by value, foo2 by reference
 	py::exec(R"(
 		print(foo_copy.bar);
 		foo_copy.bar = 5;
