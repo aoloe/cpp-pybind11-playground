@@ -6,3 +6,5 @@ $ cmake -Dpybind11_DIR=/home/ale/bin/pybind11/share/cmake/pybind11 ..
 $ make
 $ ./scripting
 ~~~
+
+see http://pybind11.readthedocs.io/en/master/advanced/embedding.html
