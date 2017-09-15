@@ -1,7 +1,7 @@
 #include "scripter.h"
 #include "scripterAPI.h"
 
-using namespace pybind11::literals;
+using namespace pybind11::literals; // for the ""_a
 
 void Scripter::runFile(std::string fileName)
 {

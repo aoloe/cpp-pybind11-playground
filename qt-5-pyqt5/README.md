@@ -1,4 +1,4 @@
-# c++ launches a Python script that loads a shared library module and sets a c++ variable
+# qt application calling a python script access the c++ API of the application
 
 - Create a `.so` module.
 - Call the Python script from the c++ code and pass a variable per reference.
@@ -11,5 +11,3 @@ $ cmake -Dpybind11_DIR=/home/ale/bin/pybind11/share/cmake/pybind11 -DCMAKE_BUILD
 $ make
 $ ./sample
 ~~~
-
-For now, you have to copy the generated `fooapi.cpython-35m-x86_64-linux-gnu.so` file next to the python script.
