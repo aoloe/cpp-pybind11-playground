@@ -1,4 +1,4 @@
-# qt application calling a python script access the c++ API of the application
+# qt application calling a python script accessing the c++ API of the application
 
 - Create a `.so` module.
 - Call the Python script from the c++ code and pass a variable per reference.
