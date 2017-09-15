@@ -1,3 +1,5 @@
+#ifndef SCRIPTER_H
+#define SCRIPTER_H
 #include <string>
 #include <QString>
 
@@ -15,3 +17,4 @@ class Scripter
     private:
         py::scoped_interpreter guard{}; // start the interpreter and keep it alive
 };
+#endif
