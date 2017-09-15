@@ -11,3 +11,9 @@ $ cmake -Dpybind11_DIR=/home/ale/bin/pybind11/share/cmake/pybind11 -DCMAKE_BUILD
 $ make
 $ ./sample
 ~~~
+
+## Notes
+
+- On a mac with Qt from homebrew you need:  
+  `cmake .. -GXcode -DQt5Widgets_DIR=/usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Widgets`
+- If you prefer you can symlink pybind11 directory and replace the `find_package` with `add_subdirectory` in `CMakeLists.txt`
