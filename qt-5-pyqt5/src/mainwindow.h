@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "scripter.h"
+
 #include <QMainWindow>
 
 class MainWindow : public QMainWindow
@@ -13,5 +15,6 @@ private slots:
     void about();
 private:
     void createActions();
+    Scripter scripter;
 };
 #endif

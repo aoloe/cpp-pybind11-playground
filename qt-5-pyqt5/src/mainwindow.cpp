@@ -1,6 +1,5 @@
 #include <iostream>
 #include "mainwindow.h"
-#include "scripter.h"
 
 #include <QtWidgets>
 #include <QDebug>
@@ -33,7 +32,6 @@ void MainWindow::scriptRun()
     qDebug() << "fileName" << fileName;
     std::cout << "filename: " << fileName.toStdString() << std::endl;
 
-    Scripter scripter;
     scripter.runFile(fileName.toStdString());
 }
 
