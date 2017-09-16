@@ -7,7 +7,6 @@ FIND_PACKAGE(pybind11 CONFIG)
 
 ADD_EXECUTABLE(scripting
     src/main.cpp
-    src/scripter.cpp
 )
 TARGET_LINK_LIBRARIES(scripting
     ${PYTHON_LIBRARIES}
