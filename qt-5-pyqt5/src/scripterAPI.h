@@ -1,7 +1,8 @@
 #ifndef SCRIPTERAPI_H
 #define SCRIPTERAPI_H
-struct ScripterAPI
+class ScripterAPI
 {
-    int bar = 1;
+    public:
+        int bar = 1;
 };
 #endif

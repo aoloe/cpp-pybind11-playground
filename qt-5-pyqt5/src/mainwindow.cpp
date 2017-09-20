@@ -29,7 +29,7 @@ void MainWindow::scriptRun()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
 		// tr("Open Image"), QStandardPaths::standardLocations(QStandardPaths::HomeLocation).last(), tr("Image Files (*.py *.png *.jpg *.bmp)"));
-		tr("Open Image"), SCRIPTS_DIRECTORY, tr("Image Files (*.py *.png *.jpg *.bmp)"));
+		tr("Open Script"), SCRIPTS_DIRECTORY, tr("Python Files (*.py)"));
     qDebug() << "fileName" << fileName;
     std::cout << "filename: " << fileName.toStdString() << std::endl;
 
