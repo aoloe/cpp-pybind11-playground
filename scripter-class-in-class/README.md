@@ -11,7 +11,7 @@ $ ./scripting
 
 # Notes
 
-Pybind11 tries to set the visibilty for all symbols as hidden. In the `CMakeLists.txt` We need to set
+Pybind11 tries to set the visibilty for all symbols as hidden. In the `CMakeLists.txt` we need to set
 
     set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
