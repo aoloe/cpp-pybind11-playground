@@ -21,7 +21,7 @@ void Scripter::runFile(std::string fileName)
 
     py::eval_file(fileName, py::globals(), locals);
 
-    document = scripterAPI.getDocument();
+    // document = scripterAPI.getDocument();
 
     // assert(scripter.bar == 5);
 }
