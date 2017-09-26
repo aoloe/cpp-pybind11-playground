@@ -7,11 +7,11 @@
 namespace ScripterAPI {
     class Document {
         public:
-            void setDocument(std::unique_ptr<Sample::Document> d) {/* document = std::move(d);*/}
-            std::unique_ptr<Sample::Document> getDocument() {/*return std::move(document);*/}
+            // void setDocument(std::unique_ptr<Sample::Document> d) {/* document = std::move(d);*/}
+            // std::unique_ptr<Sample::Document> getDocument() {/*return std::move(document);*/}
 			int a{42};
         private:
-            std::unique_ptr<Sample::Document> document;
+            // std::unique_ptr<Sample::Document> document;
     };
 }
 #endif

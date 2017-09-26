@@ -17,7 +17,7 @@ target_link_libraries(scripting
 )
 
 PYBIND11_ADD_MODULE(scripterapi
-	src/scripterAPI/scripterAPI.cpp
     src/scripterAPI/document.cpp
+	src/scripterAPI/scripterAPI.cpp
 #     src/scripterAPI/margin.cpp
 )

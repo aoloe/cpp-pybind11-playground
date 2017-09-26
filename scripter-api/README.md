@@ -1,11 +1,29 @@
 # Providing an API for manipuling a document
 
-Demoing how to provide an API that let's a Python script manipulate a document strucuture in the c++ application.
+A Scripter engine that provides Python scripting to a C++ Sample application. The main use of the scripting is for modifying the current document in the C++ application.
 
-- The application is called "Sample".
-- Its API for Python is called "ScripterAPI"
-- The `Document` data structure (and its "sub" elements) contains the data of the c++ appplication.
-- From Python you import a module called "Sample" and access the document as `Sample.document`
+This sample application shows a sane data structure for a sample document and how to provide an API to it through pybind11
+
+- The `Sample` application has a `Document` data structure that contains margins and pages:  
+
+  ```
+  sample
+    .document
+      .margin
+        .top
+        .right
+        .bottom
+        .left
+      .page[]
+        .margin
+          ...
+   ```
+
+- The `ScripterAPI` API has a `Document` structure that provides acces to the current C++ `Document` through a Python module called `scripterapi`.
+- When the scripter is called, there could be no current document (no document open).
+- The scripter should be able to modify the current document (and open / create documents).
+- From the scripter it must be possible to modify the document in the Sample application.
+- While the scripter is running, the Sample application cannot modifiy the document.
 
 ~~~.sh
 $ mkdir build
@@ -16,11 +34,6 @@ $ ./scripting
 
 ## notes
 
-thinking loud... since thinking silently did not give me a solution yet...
-
-i'm prototyping an scripter engine for an application wich has documents. i want to be able to pass the current document to the scripting engine, let the script modify the main document and finally let the main c++ code continue its work with the document.
-
-there are cases, where i will start the scripter engine without any current document existing. and in other cases the scripter engine can open new documents by itself and then (probbably) still be able to reference the current open document
 
 i'm now looking for a data structure that would allow me to pass my document. if i use "naked" pointers i can get there:
 
