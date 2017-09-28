@@ -9,10 +9,9 @@ void Scripter::runFile(std::string fileName)
 {
     // Sample::Document document;
     //Sample::Margin saMargin;
-    auto document = std::make_unique<Sample::Document>();
 
     ScripterAPI::ScripterAPI scripterAPI;
-    scripterAPI.setDocument(std::move(document));
+    scripterAPI.setDocument(document);
 
 
     auto module = py::module::import("scripterapi");

@@ -6,5 +6,5 @@ import scripterapi
 print(Sample.a)
 document = Sample.document
 print(document.a)
-# print(Sample.document.a)
+print(Sample.document.a)
 print(Sample.a)

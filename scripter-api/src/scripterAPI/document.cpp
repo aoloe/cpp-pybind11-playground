@@ -4,9 +4,9 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(documentapi, m) {
+void init_DocumentAPI(py::module &m) {
     py::class_<ScripterAPI::Document>(m, "Document")
         .def(py::init<>())
-        .def_readwrite("document", &ScripterAPI::Document::a)
+        .def_readwrite("a", &ScripterAPI::Document::a)
         ;
 }

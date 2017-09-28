@@ -13,7 +13,7 @@ int main()
 {
     Sample::Document document;
 
-    Scripter scripter{document};
+    Scripter scripter{&document};
     scripter.runFile("../python/set-bar.py");
     // std::cout << "document a " << document.a << std::endl;
     std::cout << "document top " << document.margin.top << std::endl;

@@ -12,11 +12,11 @@ namespace py = pybind11;
 class Scripter
 {
     public:
-        Scripter(Sample::Document &document) :
+        Scripter(Sample::Document const *document) :
             document{document} {};
         void runFile(std::string fileName);
     private:
-        Sample::Document &document;
+        const Sample::Document *document;
 
         py::scoped_interpreter guard{};
 };

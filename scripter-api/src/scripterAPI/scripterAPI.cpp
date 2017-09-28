@@ -4,10 +4,18 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(scripterapi, m) {
+void init_ScripterAPI(py::module &m) {
     py::class_<ScripterAPI::ScripterAPI>(m, "Sample")
         .def(py::init<>())
         .def_readwrite("a", &ScripterAPI::ScripterAPI::a)
         .def_readwrite("document", &ScripterAPI::ScripterAPI::documentAPI)
-        ;
+    ;
+}
+
+void init_DocumentAPI(py::module &);
+
+PYBIND11_MODULE(scripterapi, m) {
+        m.doc() = "Python interface the Sample application";
+        init_ScripterAPI(m);
+        init_DocumentAPI(m);
 }

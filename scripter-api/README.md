@@ -34,6 +34,8 @@ $ ./scripting
 
 ## notes
 
+- if we ever want to check how it works with `unique_ptr`s, this is a good article on how to add a `unique_ptr` as a private member in a class: <https://katyscode.wordpress.com/2012/10/04/c11-using-stdunique_ptr-as-a-class-member-initialization-move-semantics-and-custom-deleters/>
+
 
 i'm now looking for a data structure that would allow me to pass my document. if i use "naked" pointers i can get there:
 

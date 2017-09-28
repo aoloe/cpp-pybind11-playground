@@ -8,9 +8,9 @@
 namespace ScripterAPI {
     class ScripterAPI {
         public:
+            ScripterAPI() {}
             int a = 1;
-            void setDocument(std::unique_ptr<Sample::Document> d) {/* documentAPI.setDocument(std::move(d));*/}
-            // std::unique_ptr<Sample::Document> getDocument() {return std::move(documentAPI.getDocument());}
+            void setDocument(const Sample::Document* d) { documentAPI.setDocument(d);}
             Document documentAPI;
     };
 }
