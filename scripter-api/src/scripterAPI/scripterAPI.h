@@ -10,7 +10,7 @@ namespace ScripterAPI {
         public:
             ScripterAPI() {}
             int a = 1;
-            void setDocument(const Sample::Document* d) { documentAPI.setDocument(d);}
+            void setDocument(Sample::Document* d) { documentAPI.setDocument(d);}
             Document documentAPI;
     };
 }

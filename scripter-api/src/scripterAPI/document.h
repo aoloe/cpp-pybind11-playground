@@ -8,10 +8,11 @@ namespace ScripterAPI {
     class Document {
         public:
             Document() {}
-            void setDocument(const Sample::Document* d) { document = d; }
-			int a{42};
+            void setDocument(Sample::Document* d) { document = d; }
+            int getA() { return document->a; }
+            void setA(int a) { document->a = a; }
         private:
-            const Sample::Document* document;
+            Sample::Document* document;
     };
 }
 #endif
