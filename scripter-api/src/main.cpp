@@ -14,10 +14,9 @@ int main()
     Sample::Document document;
 
     Scripter scripter{&document};
-    std::cout << "c++ document a " << document.a << std::endl;
+    std::cout << "c++ document top " << document.margin.top << std::endl;
     scripter.runFile("../python/set-bar.py");
-    std::cout << "c++ document a " << document.a << std::endl;
-    std::cout << "document top " << document.margin.top << std::endl;
+    std::cout << "c++ document top " << document.margin.top << std::endl;
     // std::cout << "document page 1 top" document.page.at(0).margin.top << std::endl;
 }
 

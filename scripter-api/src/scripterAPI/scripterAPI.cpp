@@ -13,9 +13,11 @@ void init_ScripterAPI(py::module &m) {
 }
 
 void init_DocumentAPI(py::module &);
+void init_MarginAPI(py::module &);
 
 PYBIND11_MODULE(scripterapi, m) {
         m.doc() = "Python interface the Sample application";
         init_ScripterAPI(m);
         init_DocumentAPI(m);
+        init_MarginAPI(m);
 }

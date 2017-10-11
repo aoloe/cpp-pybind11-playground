@@ -7,6 +7,6 @@ namespace py = pybind11;
 void init_DocumentAPI(py::module &m) {
     py::class_<ScripterAPI::Document>(m, "Document")
         .def(py::init<>())
-        .def_property("a", &ScripterAPI::Document::getA, &ScripterAPI::Document::setA)
+        .def_property_readonly("margin", &ScripterAPI::Document::getMargin)
         ;
 }
