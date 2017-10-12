@@ -9,16 +9,15 @@ namespace ScripterAPI {
         public:
             Margin(Sample::Document* d): document{d} {}
             double getTop() { return document->margin.top; }
-            double setTop(double t) { document->margin.top = t; }
+            void setTop(double t) { document->margin.top = t; }
             double getRight() { return document->margin.right; }
-            double setRight(double r) { document->margin.right = r; }
+            void setRight(double r) { document->margin.right = r; }
             double getBottom() { return document->margin.bottom; }
-            double setBottom(double b) { document->margin.bottom = b; }
+            void setBottom(double b) { document->margin.bottom = b; }
             double getLeft() { return document->margin.left; }
-            double setLeft(double l) { document->margin.left = l; }
+            void setLeft(double l) { document->margin.left = l; }
         private:
             Sample::Document* document;
     };
 }
 #endif
-

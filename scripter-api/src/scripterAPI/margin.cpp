@@ -13,4 +13,3 @@ void init_MarginAPI(py::module &m) {
         .def_property("left", &ScripterAPI::Margin::getLeft, &ScripterAPI::Margin::setLeft)
         ;
 }
-

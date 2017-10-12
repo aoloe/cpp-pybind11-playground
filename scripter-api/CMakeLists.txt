@@ -20,4 +20,5 @@ PYBIND11_ADD_MODULE(scripterapi
     src/scripterAPI/scripterAPI.cpp
     src/scripterAPI/document.cpp
     src/scripterAPI/margin.cpp
+    src/scripterAPI/page.cpp
 )
