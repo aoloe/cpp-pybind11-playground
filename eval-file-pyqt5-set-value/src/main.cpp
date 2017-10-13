@@ -3,6 +3,15 @@
 
 namespace py = pybind11;
 
+class Dog
+{
+    public:
+        void setName(std::string n) { name = n; }
+        std::string getName() { return name; }
+    private:
+        std::string name;
+};
+
 int main()
 {
 	// http://pybind11.readthedocs.io/en/latest/advanced/embedding.html#getting-started

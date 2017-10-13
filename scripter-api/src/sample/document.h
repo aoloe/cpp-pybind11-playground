@@ -8,7 +8,13 @@ namespace Sample
     class Document
     {
         public:
-            Margin margin;
+            Document() {
+                margin = new Margin();
+            }
+            ~Document() {
+                delete margin;
+            }
+            Margin* margin;
             std::vector<Page> page;
     };
 

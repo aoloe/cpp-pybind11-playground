@@ -23,6 +23,7 @@ The pybind11 authors prefer adding pybind11 as a git sub-project: you can of cou
 ## Links
 
 - and HN thread: <https://news.ycombinator.com/item?id=15095757>
+- how to use cmake with pybind11 <https://github.com/pybind/pybind11/pull/1098>
 
 ## Notes
 

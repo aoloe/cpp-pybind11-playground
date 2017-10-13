@@ -6,7 +6,13 @@ namespace Sample
     class Page
     {
         public:
-            Margin margin;
+            Page() {
+                margin = new Margin();
+            }
+            ~Page() {
+                delete margin;
+            }
+            Margin* margin;
     };
 
 }

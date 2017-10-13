@@ -11,8 +11,8 @@ namespace ScripterAPI {
             void setDocument(Sample::Document* d) {
                 document = d;
             }
-            Margin getMargin() { return Margin(document); }
-            Page getPage(int i) { return Page(i, document); }
+            Margin getMargin() { return Margin(document->margin); }
+            Page getPage(int i) { return Page(document, i); }
         private:
             Sample::Document* document;
     };

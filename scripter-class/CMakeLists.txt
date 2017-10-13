@@ -1,18 +1,16 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.4)
-PROJECT(scripting)
+cmake_minimum_required(VERSION 3.4)
+project(scripting)
 
-SET(PYBIND11_PYTHON_VERSION 3.4)
+set(PYBIND11_PYTHON_VERSION 3.4)
 
-FIND_PACKAGE(pybind11 CONFIG)
+find_package(pybind11 CONFIG)
 
-ADD_EXECUTABLE(scripting
+add_executable(scripting
     src/main.cpp
     src/scripter.cpp
 )
-TARGET_LINK_LIBRARIES(scripting
-    ${PYTHON_LIBRARIES}
+target_link_libraries(scripting
     pybind11::embed
 )
 
-PROJECT(fooapi)
-PYBIND11_ADD_MODULE(fooapi src/foo.cpp)
+pybind11_add_module(fooapi src/foo.cpp)

@@ -3,14 +3,15 @@
 
 #include "sample/document.h"
 #include "sample/margin.h"
+#include "scripterAPI/margin.h"
 
 namespace ScripterAPI {
     class Page {
         public:
-            Page(Sample::Document* d): document{d} {}
-            double getMargin() { return document->margin; }
-            void setMargin(Margin m) { document->margin = m; }
+            Page(Sample::Document* d, int pageNumber): pageNumber{pageNumber}, document{d} {}
+            Margin getMargin() { return Margin(document->page.at(pageNumber -1).margin); }
         private:
+            int pageNumber;
             Sample::Document* document;
     };
 }
