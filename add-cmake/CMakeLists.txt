@@ -1,16 +1,12 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.4)
 project(maths)
 
-# TODO: the two following lines are probably not needed, since the find script sets the value
-IF( NOT EXISTS "${PYBIND11_DIR}" )
-    SET(PYBIND11_DIR ${PROJECT_SOURCE_DIR}"/pybind11")
-ENDIF()
+set(PYBIND11_PYTHON_VERSION 3.4)
 
-SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+find_package(pybind11 CONFIG)
 
-FIND_PACKAGE(Pybind11 REQUIRED)
+include_directories(src)
 
-SET(CMAKE_MODULE_PATH ${PYBIND11_DIR}/tools ${CMAKE_MODULE_PATH})
-INCLUDE(${PYBIND11_DIR}/tools/pybind11Tools.cmake)
-
-pybind11_add_module(maths src/maths.cpp)
+pybind11_add_module(maths
+    src/maths.cpp
+)
