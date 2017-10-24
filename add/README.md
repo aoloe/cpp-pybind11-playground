@@ -1,43 +1,45 @@
 # Add: the first example
 
-- install `python3-cxx-dev`
-- this is the command the documentation is suggesting:  
+This first example shows how to create a python module providing the `add()` function that returns the sum of the two integers given as a parameter.
 
-  ~~~.sh
+This is the compile command that works for me:
+
+```.sh
+c++ -O3 -shared -fPIC -std=c++11 -I ~/src/pybind11/include -I /usr/include/python3.5 -L /usr/lib/python3 `python-config --cflags --ldflags` maths.cpp -o maths.so
+```
+
+As a result ou will get the python library `maths.so`.
+
+You can now import the "maths" module in Python3. Start Python3 in the directory where the file is located and:
+
+```.py
+>>> import maths
+>>> print(maths.add(1,2))
+3
+>>>
+```
+
+# Notes
+
+the pybind11 documentation is suggesting the following:
+
+  ```.sh
   c++ -O3 -shared -std=c++11 -I <path-to-pybind11>/include `python-config --cflags --ldflags` maths.cpp -o maths.so
-  ~~~
+  ```
 
-- using
+but it fails for me.
 
-  ~~~.sh
-  c++ -O3 -fPIC -std=c++11 -I <path-to-pybind11>/include `python-config --cflags --ldflags` maths.cpp -o maths.so
-  ~~~
+First I need to tell the compiler to use Python3 (since Debian and many other Linux distributions still default to Python2):
 
-  i get `undefined reference to `main'`
-- so it gets:
-
-  ~~~.sh
-  c++ -O3 -fPIC -std=c++11 -I <path-to-pybind11>/include `python-config --cflags --ldflags` -c maths.cpp -o maths.so
-  ~~~
-
-  to compile without linking.  
-  but then, in python i get `ImportError: maths.so: only ET_DYN and ET_EXEC can be loaded` because it's not linked.  
-  we need a main, and drop the `-c`.
-- the compilation is working, but when importing the module, python3 complains:
-
-  ~~~
-  ImportError: dynamic module does not define module export function (PyInit_maths)
-  ~~~
-
-  we were compiling with python2, but using python3. the `g++` finally is:
-
-  ~~~.sh
-  c++ -O3 -shared -fPIC -std=c++11 -I /home/ale/src/pybind11/include -I /usr/include/python3.5 -L /usr/lib/python3 `python-config --cflags --ldflags` maths.cpp -o maths.so
-  ~~~
+  ```.sh
+  c++ -O3 -shared -fPIC -std=c++11 -I ~/src/pybind11/include -I /usr/include/python3.5 -L /usr/lib/python3 `python-config --cflags --ldflags` maths.cpp -o maths.so
+  ```
 
   (<https://docs.python.org/3/extending/embedding.html#compiling-and-linking-under-unix-like-systems>)
 
-- yeah!
+Then I need to add a `main()` function in the `.cpp` file.
+
+Question: (how) can I compile a pure library without any main?
 
 ## Further steps
 
