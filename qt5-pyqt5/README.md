@@ -2,7 +2,7 @@
 
 ~~~.sh
 $ mkdir build
-$ cmake -Dpybind11_DIR=/home/ale/bin/pybind11/share/cmake/pybind11 -DCMAKE_BUILD_TYPE=Debug ..
+$ cmake -DCMAKE_BUILD_TYPE=Debug ..
 $ make
 $ ./sample
 ~~~

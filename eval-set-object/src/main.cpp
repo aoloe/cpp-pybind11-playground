@@ -17,13 +17,17 @@ PYBIND11_EMBEDDED_MODULE(foo_module, m) {
 
 int main()
 {
-	py::scoped_interpreter guard{}; // start the interpreter and keep it alive
+	py::scoped_interpreter guard{};
 
-	Foo foo1, foo2;
+	Foo foo_1, foo_2;
 
 	auto module = py::module::import("foo_module");
 
-	auto locals = py::dict("foo_copy"_a=foo1, "foo_ref"_a=py::cast(foo2, py::return_value_policy::reference), **module.attr("__dict__")); // foo1 by value, foo2 by reference
+	auto locals = py::dict(
+        "foo_copy"_a=foo_1, // by value
+        "foo_ref"_a=py::cast(foo_2, // by reference
+            py::return_value_policy::reference),
+        **module.attr("__dict__"));
 	py::exec(R"(
 		print(foo_copy.bar);
 		foo_copy.bar = 5;
@@ -31,7 +35,7 @@ int main()
 		foo_ref.bar = 5;
 	)", py::globals(), locals);
 
-	assert(foo1.bar == 1);
-	assert(foo2.bar == 5);
+	assert(foo_1.bar == 1);
+	assert(foo_2.bar == 5);
 
 }

@@ -2,15 +2,34 @@
 
 The `pet` module provides the `Dog` and `Cat` classes.
 
-Both classes have the `getName()` and `setName()` class functions.
+Both C++ classes have a `getName()` and a `setName()` class functions.
 
-`Dog` is added to the Python module with a getter and a setter.
+The `Dog` and `Cat` classes are exposed in a different way to the Python code:
 
-`Cat` is more _pythonic_ and can access the C++ accessor as a property.
+- `Dog` is added to the Python module with a getter and a setter.
+- `Cat` is more _pythonic_ and provides access to the C++ accessors as a property.
 
-~~~.sh
+In C++, both classes are defined in the exact same way, but:
+
+- the `get` and `set` function of the `Dog` class are bound to functions of the same name in Python
+- for the `Cat` the `name` class property on the Python side is _using_ the C++ getter and setter to read and write the `name` value.
+
+```py
+py::class_<Dog>(m, "Dog")
+.def(py::init<const std::string &>())
+.def("setName", &Dog::setName, "Setting the dog's name")
+.def("getName", &Dog::getName), "Getting the dog's name";
+
+py::class_<Cat>(m, "Cat")
+.def(py::init<const std::string &>())
+.def_property("name", &Cat::getName, &Cat::setName, "The cat name");
+```
+
+You can compile and import the `pet` module, containing a `Dog` and a `Cat` classes:
+
+```.sh
 $ mkdir build
-$ cmake -Dpybind11_DIR=~/bin/pybind11/share/cmake/pybind11 ..
+$ cmake ..
 $ make
 $ python3
 >>> import pet
@@ -28,5 +47,4 @@ $ python3
 >>> b.name = 'Fix'
 >>> b.name
 'Fix'
-~~~
-
+```

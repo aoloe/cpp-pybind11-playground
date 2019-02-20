@@ -1,16 +1,68 @@
 # Eval a python script that modifies a C++ object
 
-From the C++ code we run a Python script that modifies the state of a C++ variable by calling a C++ function.
+This example shows how to create a C++ program that _runs_ a Python script that has access to variables and functions defined in the C++ program itself.
 
-In the C++ program we define a `local` list that contains the variable and the function passed to the Python file when evaluating it.
+The first step is to include the `pybind11`'s `embed.h` library:
+
+```cpp
+#include <pybind11/embed.h>
+```
+
+We then need to load the Python interpreter:
+
+```cpp
+py::scoped_interpreter guard{};
+```
+
+We do not directly use it and it will be automatically destroyed when it goes out of scope.
+
+In the _local_ environment variable, we create a variable and a function that will be injected in the the Python script's environment:
+
+```cpp
+auto local = py::dict();
+local["y"] = ...;
+local["set_the_answer"] = ...;
+```
+
+The `scope` variable _contains_ the scope of the main module of our interpreter:
+
+```cpp
+py::object scope = py::module::import("__main__").attr("__dict__");
+```
+
+We can finally _evaluate_ our Python script:
+
+```cpp
+py::eval_file("set-the-y.py", scope, local);
+```
+
+What does the script do?
+
+```py
+set_the_answer(y - 1)
+```
+
+It simply calls the `set_the_answer()` function we have defined by passing the _injected_ variable `y` decremented by one.
+
+The final effect is that the `val_out` variable we have defined in our C++ code will now have a value of 42 (`y - 1`) instead of the original `7`.
+
+You can try it with:
 
 ~~~.sh
 $ mkdir build
 $ cd build
-$ cmake -Dpybind11_DIR=~/bin/pybind11/share/cmake/pybind11 ..
+$ cmake
 $ make
 $ ./scripting
 ~~~
+
+With the `configure_file` command, `CMakeLists.txt` copies the Python script into the build directory.
+
+You can modify the Python Script in your build directory and see that the value printed by the `scripting` program will change accordingly.
+
+## Todo
+
+- What does it mean that we cannot have two concurrent interpreters (as mentioned in the pybind11 documentation)?
 
 ## References
 

@@ -16,7 +16,7 @@ target_link_libraries(scripting
     pybind11::embed
 )
 
-PYBIND11_ADD_MODULE(scripterapi
+pybind11_add_module(scripterapi
     src/scripterAPI/scripterAPI.cpp
     src/scripterAPI/document.cpp
     src/scripterAPI/margin.cpp

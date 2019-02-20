@@ -35,5 +35,5 @@ PYBIND11_MODULE(pet, m) {
 
     py::class_<Cat>(m, "Cat")
     .def(py::init<const std::string &>())
-    .def_property("name", &Cat::getName, &Cat::setName);
+    .def_property("name", &Cat::getName, &Cat::setName, "The cat name");
 }

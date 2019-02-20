@@ -5,15 +5,14 @@ namespace py = pybind11;
 
 int main()
 {
-	// http://pybind11.readthedocs.io/en/latest/advanced/embedding.html#getting-started
+    // http://pybind11.readthedocs.io/en/latest/advanced/embedding.html#getting-started
 	py::scoped_interpreter guard{}; // start the interpreter and keep it alive
 
     // inject the y variable into the python script
 	auto local = py::dict();
 	local["y"] = py::int_(43);
 
-    // inject the set_the_answer() funciton into the python script.
-    // set_the_answer() modifies the c++ variable val_out
+    // inject the set_the_answer() lambda into the python script.
 	int val_out{7};
 	local["set_the_answer"] = py::cpp_function([&](int value) { val_out = value; });
 

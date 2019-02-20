@@ -1,15 +1,15 @@
-# C++ launches a Python script that loads a shared library module and sets a c++ variable
+# C++ creates and loads a module and runs a Python script that uses the module to modify its own state
 
-- Use the C++ foo.[h|cpp] files to create a `.so` shared object (module)
-- Load the module from the C++ main program Python.
-- Call the Python script from the C++ code and pass one variable by value and the other by reference.
-- The Python script modifies the variable.
-- The c++ code checks that the values has been modified
+The C++ `foo.h` and `foo.cpp` provide the `fooapi` Python module (a `.so` shared object defining the `Foo` class with a `bar` member variable (an integer initialized to `1`).
+
+The `main.cpp` program includes the `foo.h` library and imports the `fooapi` into the Python interpreter.
+
+It calls the usual Python script with two variables, one by copy and one by reference.
 
 ~~~.sh
 $ mkdir build
 $ cd build
-$ cmake -Dpybind11_DIR=/home/ale/bin/pybind11/share/cmake/pybind11 ..
+$ cmake ..
 $ make
 $ ./scripting
 ~~~

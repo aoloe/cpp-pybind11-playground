@@ -1,8 +1,16 @@
-# A python script running a PyQt5 input dialog and setting a c++ variable with the value
+# Setting a C++ value from a PyQt5 input dialog
+
+The C++ program defines a `set_the_answer` lambda that can receive the new value and passes it as `local` to the `input-number.py` script.
+
+The Python script creates an (PyQt) application that is showing an input dialog. If the _Ok_ button is pressed, the `set_the_answer()` function passes the value to the C++ code.
+
+It is to be noted that `pybind11` is passing the `set_the_answer()` as a local to the _eval_ (exec, in reality) Python context: we need to explicitely pass the function to the `get_the_value()` to make it visible inside of it.  
+(This is becaue Python executes the code as if it was in a class environment... I've been told.)
 
 ~~~.sh
 $ mkdir build
-$ cmake -Dpybind11_DIR=/home/ale/bin/pybind11/share/cmake/pybind11 ..
+$ cd build
+$ cmake ..
 $ make
 $ ./scripting
 ~~~
