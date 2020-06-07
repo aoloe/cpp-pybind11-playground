@@ -39,8 +39,8 @@ c++ -O3 -shared -fPIC `python-config --cflags --ldflags` src/maths.cpp -o maths.
 ```
 
 - If you're compiler does not default to (at least) C++ 11, you will need `-std=c++11`
-- If you have a _local_ version of `pybind11` you will need  `-fPIC -std=c++11 -I ~/src/pybind11/include`
-- If your system does not defaul to Python 3, `-I /usr/include/python3.7 -L /usr/lib/python3`
+- If you have a _local_ version of `pybind11` you will need  `-fPIC -I ~/src/pybind11/include`
+- If your system does not default to Python 3, `-I /usr/include/python3.7 -L /usr/lib/python3`
 
 As a result you will get the python library `maths.so`.
 
