@@ -32,7 +32,7 @@ $ cmake ..
 $ make
 ```
 
-If cmake is not installed in a standard path, you'll need to tell cmake where it is installed by providing `pybind11_DIR` :
+If pybind11 is not installed in a standard path, you'll need to tell cmake where it is installed by providing `pybind11_DIR` :
 
 ```.sh
 $ cmake -Dpybind11_DIR=~/bin/pybind11/share/cmake/pybind11 ..
