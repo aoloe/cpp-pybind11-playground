@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.4)
 project(scripting)
 
-set(PYBIND11_PYTHON_VERSION 3.7)
+set(PYBIND11_PYTHON_VERSION 3)
 
 find_package(pybind11 CONFIG)
 
