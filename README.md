@@ -14,6 +14,7 @@ There are three ways for getting pybind11:
 
 - _Embedding_ it in your project as a Git submodule.
 - Installing pybind11 through your package manager (or downloading binaries that are installed in the system path).
+  - In 2023, in Debian Testing you need to install `pybind11-dev` and `python3-pybind11`.
 - Compiling pybind11 in a separate directory.
 
 

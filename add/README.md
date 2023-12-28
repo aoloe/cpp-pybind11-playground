@@ -42,6 +42,14 @@ c++ -O3 -shared -fPIC `python-config --cflags --ldflags` src/maths.cpp -o maths.
 - If you have a _local_ version of `pybind11` you will need  `-fPIC -I ~/src/pybind11/include`
 - If your system does not default to Python 3, `-I /usr/include/python3.7 -L /usr/lib/python3`
 
+In 2023, with Debian Testing, the command for compiling is:
+
+```sh
+g++ -O3 -shared -fPIC -std=c++11 -I /usr/include/python3.11 -L /usr/lib/python3 src/maths.cpp -o maths.so
+```
+
+- `pybind11-dev` and `python3-pybind11` need to be installed.
+
 As a result you will get the python library `maths.so`.
 
 You can now import the "maths" module in Python3. Start Python3 in the directory where the `.so` file is located and:
